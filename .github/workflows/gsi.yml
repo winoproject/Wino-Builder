@@ -18,7 +18,8 @@ jobs:
          continue-on-error: true
          timeout-minutes: 100
          run: |
-              brew install coreutils
+              brew install --cask osxfuse
+              brew install coreutils gawk fuse ext2fuse
               git config --global user.name "nnippon"
               git config --global user.email "adameyyad999@gmail.com"
               git clone --recurse-submodules https://github.com/nnippon/ErfanGSIs
@@ -26,7 +27,9 @@ jobs:
        - name: Setup Erfan Tools
          continue-on-error: true
          timeout-minutes: 10
-         run: bash ErfanGSIs/setup.sh
+         run: |
+           cd ErfanGSIs
+           bash setup.sh
        - name: Generate config.prop
          continue-on-error: true
          timeout-minutes: 3
